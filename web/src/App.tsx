@@ -1,9 +1,10 @@
 import firebase from "firebase/compat";
-import {Box, Button, createTheme, ThemeProvider} from "@mui/material";
-import React, { useEffect, useState } from "react";
+import { Box, Button, createTheme, ThemeProvider } from "@mui/material";
+import React, { useContext, useEffect, useState } from "react";
 import User = firebase.User;
 import ChatPage from "./pages/ChatPage";
-import {grey, orange, purple, red} from "@mui/material/colors";
+import { orange, red } from "@mui/material/colors";
+import { Context } from "./main";
 
 firebase.initializeApp({
   apiKey: "AIzaSyAe5-dVZWNsogXdeolvcPKvC_lFvf88b10",
@@ -17,29 +18,23 @@ firebase.initializeApp({
   measurementId: "G-YK3DXVDL0P",
 });
 
-const auth = firebase.auth();
-const firestore = firebase.firestore();
-
-const SignIn = () => {
-  const signInWithGoogle = () => {
-    const provider = new firebase.auth.GoogleAuthProvider();
-    return auth.signInWithPopup(provider);
-  };
-
-  return <Button onClick={signInWithGoogle}> AUTH </Button>;
-};
-
 //TODO
-// linter
-//prettier
 //state management
-// vite config
 //storybook
 // tests
 //cicd
 
 function App() {
+  const { auth } = useContext(Context);
   const [user, setUser] = useState<User>();
+  const SignIn = () => {
+    const signInWithGoogle = () => {
+      const provider = new firebase.auth.GoogleAuthProvider();
+      return auth.signInWithPopup(provider);
+    };
+
+    return <Button onClick={signInWithGoogle}> AUTH </Button>;
+  };
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged((user) => {
@@ -49,20 +44,21 @@ function App() {
 
   const theme = createTheme({
     palette: {
-      mode: 'dark',
+      mode: "dark",
       primary: {
-        main: purple[500]
-      }
-    }
-  })
+        main: orange[500],
+      },
+      secondary: {
+        main: red[500],
+      },
+    },
+  });
 
   return (
-      <ThemeProvider theme={theme}>
-    <Box className="App">
-      {user ? <ChatPage/>: <SignIn/>}
-    </Box>
-  </ThemeProvider>
-  )
+    <ThemeProvider theme={theme}>
+      <Box className="App">{user ? <ChatPage user={user} /> : <SignIn />}</Box>
+    </ThemeProvider>
+  );
 }
 
 export default App;
