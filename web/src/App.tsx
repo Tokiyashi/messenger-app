@@ -1,7 +1,9 @@
 import firebase from "firebase/compat";
+import {Box, Button, createTheme, ThemeProvider} from "@mui/material";
 import React, { useEffect, useState } from "react";
-import { Box, Button } from "@mui/material";
 import User = firebase.User;
+import ChatPage from "./pages/ChatPage";
+import {grey, orange, purple, red} from "@mui/material/colors";
 
 firebase.initializeApp({
   apiKey: "AIzaSyAe5-dVZWNsogXdeolvcPKvC_lFvf88b10",
@@ -45,7 +47,22 @@ function App() {
     });
   }, []);
 
-  return <Box className="App">{user ? <div>asdasd </div> : <SignIn />}</Box>;
+  const theme = createTheme({
+    palette: {
+      mode: 'dark',
+      primary: {
+        main: purple[500]
+      }
+    }
+  })
+
+  return (
+      <ThemeProvider theme={theme}>
+    <Box className="App">
+      {user ? <ChatPage/>: <SignIn/>}
+    </Box>
+  </ThemeProvider>
+  )
 }
 
 export default App;
