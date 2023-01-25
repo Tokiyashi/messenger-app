@@ -1,4 +1,4 @@
-import {Paper, styled} from "@mui/material";
+import { Paper, styled } from "@mui/material";
 
 const PageContainer = styled(Paper)`
   display: flex;
@@ -7,6 +7,7 @@ const PageContainer = styled(Paper)`
   align-items: center;
   justify-content: space-between;
   height: 100vh;
-`
+  overflow: hidden;
+`;
 
 export default PageContainer;

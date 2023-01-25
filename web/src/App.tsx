@@ -56,7 +56,7 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Box className="App">{user ? <ChatPage user={user} /> : <SignIn />}</Box>
+      {user ? <ChatPage user={user} /> : <SignIn />}
     </ThemeProvider>
   );
 }
