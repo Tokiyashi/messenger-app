@@ -6,6 +6,7 @@ const Container = styled(Paper)`
   justify-content: center;
   align-items: center;
   height: 15%;
+  gap: 1rem;
 `;
 
 export default Container;

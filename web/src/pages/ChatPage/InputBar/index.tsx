@@ -1,10 +1,12 @@
-import React, { FunctionComponent, useContext, useState } from "react";
-import { Button, Input } from "@mui/material";
+import React, {FunctionComponent, KeyboardEvent, KeyboardEventHandler, useContext, useState} from "react";
+import {Button, TextField} from "@mui/material";
 import Container from "./styles/Container";
 import firebase from "firebase/compat";
 import User = firebase.User;
 import { Context } from "../../../main";
 import { ChatMessage } from "../../../common/types/chatMessage";
+import SendIcon from '@mui/icons-material/Send';
+import SendButton from "./styles/SendButton";
 
 type InputBarProps = {
   user: User;
@@ -31,17 +33,23 @@ const InputBar: FunctionComponent<InputBarProps> = ({ user }) => {
     setValue(input);
   };
 
+  const handleKeyDown = (event: KeyboardEvent<HTMLDivElement>) =>{
+    if (event.code === 'Enter'){
+      handleAddMessage()
+    }
+  }
+
   return (
-    <Container sx={{ backgroundColor: "primary.light" }}>
-      <Input
+    <Container sx={{ backgroundColor: "divider" }}>
+      <TextField
         value={value}
-        placeholder="type"
+        placeholder="Type something..."
+        onKeyDown={handleKeyDown}
         onChange={(e) => handleValueChange(e.target.value)}
-      />
-      <Button variant="contained" onClick={handleAddMessage}>
-        {" "}
-        SEND MESSAGE{" "}
-      </Button>
+        />
+      <SendButton variant="contained" onClick={handleAddMessage}>
+        <SendIcon />
+      </SendButton>
     </Container>
   );
 };

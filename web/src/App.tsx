@@ -46,10 +46,10 @@ function App() {
     palette: {
       mode: "dark",
       primary: {
-        main: orange[500],
+        main: red[500],
       },
       secondary: {
-        main: red[500],
+        main: '#04674F',
       },
     },
   });

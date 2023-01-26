@@ -2,11 +2,10 @@ import { Box, styled } from "@mui/material";
 
 const Container = styled(Box)`
   padding: 1rem;
-  border-radius: 15px;
+  border-radius: 12px 1px 12px 12px;
   justify-content: center;
   align-items: center;
   height: 1rem;
-  width: 50%;
 `;
 
 export default Container;
