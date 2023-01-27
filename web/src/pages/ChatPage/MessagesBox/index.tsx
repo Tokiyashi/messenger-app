@@ -4,13 +4,13 @@ import React, {
   useEffect,
   useState,
 } from "react";
-import { Context } from "../../../main";
 import { Query } from "@firebase/firestore-types";
 import Container from "./styles/Container";
 import firebase from "firebase/compat";
 import User = firebase.User;
 import { ChatMessage } from "../../../common/types/chatMessage";
 import MessagesList from "./MessagesList";
+import {Context} from "../../../App";
 
 type MessagesBoxProps = { user: User };
 

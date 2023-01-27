@@ -1,18 +1,16 @@
 import React, {
   FunctionComponent,
   useContext,
-  useEffect,
   useState,
 } from "react";
 import { ChatMessage } from "../../../../../common/types/chatMessage";
 import Container from "./styles/Container";
 import { Avatar, Typography } from "@mui/material";
 import Wrapper from "./styles/Wrapper";
-import { Context } from "../../../../../main";
 import { userService } from "../../../../../services/UserService";
-import firebase from "firebase/compat";
 import useAsyncEffect from "use-async-effect";
 import MessageAndInfo from "./styles/MessageAndInfo";
+import { Context } from "../../../../../App";
 
 type MessageItemProps = {
   item: ChatMessage;

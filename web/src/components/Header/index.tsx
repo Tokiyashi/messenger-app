@@ -1,8 +1,7 @@
 import { Button, Typography } from "@mui/material";
 import React, { useContext } from "react";
+import { Context } from "../../App";
 import Container from "./styles/Container";
-import firebase from "firebase/compat";
-import { Context } from "../../main";
 
 const Header = () => {
   const { auth, firebase } = useContext(Context);

@@ -8,11 +8,11 @@ import { TextField } from "@mui/material";
 import Container from "./styles/Container";
 import firebase from "firebase/compat";
 import User = firebase.User;
-import { Context } from "../../../main";
 import { ChatMessage } from "../../../common/types/chatMessage";
 import SendIcon from "@mui/icons-material/Send";
 import SendButton from "./styles/SendButton";
 import { userService } from "../../../services/UserService";
+import { Context } from "../../../App";
 
 type InputBarProps = {
   user: User;

@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
 import PageContainer from "../styles/PageContainer";
 import { Button, Typography } from "@mui/material";
-import { Context } from "../../main";
 import Content from "./styles/Content";
+import {Context} from "../../App";
 
 const AuthPage = () => {
-  const { firebase, auth, firestore } = useContext(Context);
+  const { firebase, auth } = useContext(Context);
   const signInWithGoogle = () => {
     const provider = new firebase.auth.GoogleAuthProvider();
     return auth.signInWithPopup(provider);

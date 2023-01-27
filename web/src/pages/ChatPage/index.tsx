@@ -3,10 +3,10 @@ import PageContainer from "../styles/PageContainer";
 import { Button } from "@mui/material";
 import InputBar from "./InputBar";
 import MessagesBox from "./MessagesBox";
-import { Context } from "../../main";
 import firebase from "firebase/compat";
 import User = firebase.User;
 import Header from "../../components/Header";
+import {Context} from "../../App";
 
 type ChatPageProps = {
   user: User;
