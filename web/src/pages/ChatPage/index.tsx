@@ -6,6 +6,7 @@ import MessagesBox from "./MessagesBox";
 import { Context } from "../../main";
 import firebase from "firebase/compat";
 import User = firebase.User;
+import Header from "../../components/Header";
 
 type ChatPageProps = {
   user: User;
@@ -24,6 +25,7 @@ const ChatPage: FunctionComponent<ChatPageProps> = ({ user }) => {
 
   return (
     <PageContainer>
+      <Header />
       <Button onClick={handleDelete}> Delete </Button>
       <MessagesBox user={user} />
       <InputBar user={user} />

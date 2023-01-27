@@ -20,7 +20,7 @@ const MessagesBox: FunctionComponent<MessagesBoxProps> = ({ user }) => {
   const query: Query = firestore
     .collection("messages")
     .orderBy("createdAt")
-    .limitToLast(10);
+    .limitToLast(18);
 
   useEffect(() => {
     query.onSnapshot((querySnapshot) => {

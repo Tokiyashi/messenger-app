@@ -1,22 +1,10 @@
 import firebase from "firebase/compat";
-import { Box, Button, createTheme, ThemeProvider } from "@mui/material";
+import { createTheme, ThemeProvider } from "@mui/material";
 import React, { useContext, useEffect, useState } from "react";
 import User = firebase.User;
-import ChatPage from "./pages/ChatPage";
-import { orange, red } from "@mui/material/colors";
+import { red } from "@mui/material/colors";
 import { Context } from "./main";
-
-firebase.initializeApp({
-  apiKey: "AIzaSyAe5-dVZWNsogXdeolvcPKvC_lFvf88b10",
-  authDomain: "messenger-bf8ac.firebaseapp.com",
-  databaseURL:
-    "https://messenger-bf8ac-default-rtdb.europe-west1.firebasedatabase.app",
-  projectId: "messenger-bf8ac",
-  storageBucket: "messenger-bf8ac.appspot.com",
-  messagingSenderId: "933451831913",
-  appId: "1:933451831913:web2:f6ef9b973ce9a694da20f8",
-  measurementId: "G-YK3DXVDL0P",
-});
+import Pages from "./pages";
 
 //TODO
 //state management
@@ -27,14 +15,14 @@ firebase.initializeApp({
 function App() {
   const { auth } = useContext(Context);
   const [user, setUser] = useState<User>();
-  const SignIn = () => {
-    const signInWithGoogle = () => {
-      const provider = new firebase.auth.GoogleAuthProvider();
-      return auth.signInWithPopup(provider);
-    };
-
-    return <Button onClick={signInWithGoogle}> AUTH </Button>;
-  };
+  // const SignIn = () => {
+  //   const signInWithGoogle = () => {
+  //     const provider = new firebase.auth.GoogleAuthProvider();
+  //     return auth.signInWithPopup(provider);
+  //   };
+  //
+  //   return <Button onClick={signInWithGoogle}> AUTH </Button>;
+  // };
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged((user) => {
@@ -49,14 +37,14 @@ function App() {
         main: red[500],
       },
       secondary: {
-        main: '#04674F',
+        main: "#04674F",
       },
     },
   });
 
   return (
     <ThemeProvider theme={theme}>
-      {user ? <ChatPage user={user} /> : <SignIn />}
+      <Pages user={user} />
     </ThemeProvider>
   );
 }

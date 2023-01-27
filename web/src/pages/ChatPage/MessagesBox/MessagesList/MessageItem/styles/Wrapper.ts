@@ -1,8 +1,8 @@
-import {Box, styled} from "@mui/material";
+import { Box, styled } from "@mui/material";
 
 const Wrapper = styled(Box)`
   display: flex;
   justify-content: center;
-  gap: 1rem;
-`
+  gap: 2rem;
+`;
 export default Wrapper;

@@ -1,8 +1,13 @@
 import React from "react";
-import { Box } from "@mui/material";
+import PageContainer from "../styles/PageContainer";
+import { Typography } from "@mui/material";
 
 const AuthPage = () => {
-  return <Box></Box>;
+  return (
+    <PageContainer>
+      <Typography> Hello </Typography>
+    </PageContainer>
+  );
 };
 
 export default AuthPage;

@@ -2,6 +2,7 @@ import React, { FunctionComponent } from "react";
 import { ChatMessage } from "../../../../common/types/chatMessage";
 import MessageItem from "./MessageItem";
 import Container from "./styles/Container";
+import { Typography } from "@mui/material";
 
 type MessagesListProps = {
   messages: ChatMessage[];

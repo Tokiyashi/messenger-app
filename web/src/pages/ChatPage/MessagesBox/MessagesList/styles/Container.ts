@@ -5,11 +5,13 @@ const Container = styled(Box)`
   gap: 1rem;
   display: flex;
   flex-direction: column;
-  height: 100%;
   align-items: flex-end;
   justify-content: flex-end;
   padding: 2rem 4rem;
-  overflow: auto;
   margin-bottom: 2rem;
+  overflow: auto;
+  overflow-block: scroll;
+  max-height: 60vh;
+  height: 60vh;
 `;
 export default Container;
