@@ -1,10 +1,10 @@
 import firebase from "firebase/compat";
-import User = firebase.User;
+import { User } from "../../common/types/User";
 
 class UserService {
   getUsers = async () => {
     const result: User[] = [];
-    const users = await firebase
+    await firebase
       .firestore()
       .collection("users")
       .get()
@@ -17,12 +17,19 @@ class UserService {
     return result;
   };
 
-  createUser = async (user: User) => {
-    console.log(user.toJSON());
-    await firebase
-      .firestore()
-      .collection("users")
-      .add(JSON.parse(JSON.stringify(user.toJSON())));
+  createUser = async (user: firebase.User) => {
+    if (!!(await this.getUserByUid(user.uid))) {
+      return;
+    }
+    const { displayName, uid, phoneNumber, email, photoURL } = user;
+    await firebase.firestore().collection("users").add({
+      displayName,
+      uid,
+      phoneNumber,
+      email,
+      photoURL,
+      createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+    });
   };
 
   getUserByUid = async (uid: string) => {

@@ -7,18 +7,16 @@ import React, {
 import { TextField } from "@mui/material";
 import Container from "./styles/Container";
 import firebase from "firebase/compat";
-import User = firebase.User;
 import { ChatMessage } from "../../../common/types/chatMessage";
 import SendIcon from "@mui/icons-material/Send";
 import SendButton from "./styles/SendButton";
-import { userService } from "../../../services/UserService";
 import { Context } from "../../../App";
+import {useAppSelector} from "../../../utils/hooks/redux";
 
-type InputBarProps = {
-  user: User;
-};
 
-const InputBar: FunctionComponent<InputBarProps> = ({ user }) => {
+const InputBar: FunctionComponent = () => {
+
+  const {user} = useAppSelector(state => state.userReducer)
   const [value, setValue] = useState("");
   const { firestore } = useContext(Context);
   const handleAddMessage = async () => {
@@ -33,11 +31,6 @@ const InputBar: FunctionComponent<InputBarProps> = ({ user }) => {
       createdAt: firebase.firestore.FieldValue.serverTimestamp(),
     };
     await firestore.collection("messages").add(message);
-
-    const isExistUser = await userService.getUserByUid(user.uid);
-    if (!isExistUser) {
-      await userService.createUser(user);
-    }
   };
 
   const handleValueChange = (input: string) => {

@@ -1,10 +1,11 @@
 import firebase from "firebase/compat";
 import { createTheme, ThemeProvider } from "@mui/material";
-import React, { createContext, useEffect, useState } from "react";
-import User = firebase.User;
+import React, { createContext } from "react";
 import { red } from "@mui/material/colors";
 import Pages from "./pages";
 import AuthPage from "./pages/AuthPage";
+import { useAppSelector} from "./utils/hooks/redux";
+import {useListenUser} from "./utils/hooks/user";
 
 //TODO
 //sidebar
@@ -12,6 +13,9 @@ import AuthPage from "./pages/AuthPage";
 //storybook
 // tests
 //cicd
+
+//TODO
+// Add user type.
 
 firebase.initializeApp({
   apiKey: "AIzaSyAe5-dVZWNsogXdeolvcPKvC_lFvf88b10",
@@ -30,17 +34,15 @@ const firestore = firebase.firestore();
  const Context = createContext({ firebase, auth, firestore });
 
 function App() {
-  const [user, setUser] = useState<User>();
 
-  useEffect(() => {
-    firebase.auth().onAuthStateChanged((user) => {
-      setUser(user || undefined);
-    });
-  }, []);
-
-  const theme = createTheme({
+  useListenUser()
+  const user = useAppSelector(state => state.userReducer.user)
+  const darkTheme = createTheme({
     palette: {
       mode: "dark",
+      background: {
+        default: "#222222"
+      },
       primary: {
         main: red[500],
       },
@@ -52,8 +54,8 @@ function App() {
 
   return (
     <Context.Provider value={{ firebase, auth, firestore }}>
-      <ThemeProvider theme={theme}>
-        {user ? <Pages user={user} /> : <AuthPage />}
+      <ThemeProvider theme={darkTheme}>
+        {user ? <Pages /> : <AuthPage />}
       </ThemeProvider>
     </Context.Provider>
   );

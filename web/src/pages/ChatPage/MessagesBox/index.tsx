@@ -6,15 +6,11 @@ import React, {
 } from "react";
 import { Query } from "@firebase/firestore-types";
 import Container from "./styles/Container";
-import firebase from "firebase/compat";
-import User = firebase.User;
 import { ChatMessage } from "../../../common/types/chatMessage";
 import MessagesList from "./MessagesList";
 import {Context} from "../../../App";
 
-type MessagesBoxProps = { user: User };
-
-const MessagesBox: FunctionComponent<MessagesBoxProps> = ({ user }) => {
+const MessagesBox: FunctionComponent = () => {
   const { firestore } = useContext(Context);
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const query: Query = firestore
@@ -34,7 +30,7 @@ const MessagesBox: FunctionComponent<MessagesBoxProps> = ({ user }) => {
 
   return (
     <Container>
-      <MessagesList user={user} messages={messages} />
+      <MessagesList messages={messages} />
     </Container>
   );
 };

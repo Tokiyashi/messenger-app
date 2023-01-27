@@ -1,12 +1,11 @@
-import { Box, styled } from "@mui/material";
+import { Paper, styled} from "@mui/material";
 
-const Container = styled(Box)`
+const Container = styled(Paper)`
   width: 100%;
-  max-width: 100vw;
-  height: 10%;
+  height: 15%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
 `;
 
 export default Container;
