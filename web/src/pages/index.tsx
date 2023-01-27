@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from "react";
-import { BrowserRouter, Route, Router, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import AuthPage from "./AuthPage";
 import ChatPage from "./ChatPage";
 import firebase from "firebase/compat";

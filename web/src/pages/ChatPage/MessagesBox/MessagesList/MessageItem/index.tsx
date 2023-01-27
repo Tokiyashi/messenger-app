@@ -1,8 +1,4 @@
-import React, {
-  FunctionComponent,
-  useContext,
-  useState,
-} from "react";
+import React, { FunctionComponent, useContext, useState } from "react";
 import { ChatMessage } from "../../../../../common/types/chatMessage";
 import Container from "./styles/Container";
 import { Avatar, Typography } from "@mui/material";
@@ -14,9 +10,10 @@ import { Context } from "../../../../../App";
 
 type MessageItemProps = {
   item: ChatMessage;
+  isMe: boolean;
 };
 
-const MessageItem: FunctionComponent<MessageItemProps> = ({ item }) => {
+const MessageItem: FunctionComponent<MessageItemProps> = ({ item, isMe }) => {
   const { firestore, firebase, auth } = useContext(Context);
   const [user, setUser] = useState<any | undefined>();
   const [isLoading, setIsLoading] = useState(false);
@@ -26,15 +23,20 @@ const MessageItem: FunctionComponent<MessageItemProps> = ({ item }) => {
     setUser(result);
   }, []);
 
+  const messagePosition = isMe? 'right':'left';
+
   return (
-    <Wrapper>
-      <MessageAndInfo>
-        <Container sx={{ backgroundColor: "secondary.main" }}>
+    <Wrapper pos={messagePosition}>
+      <MessageAndInfo pos={messagePosition}>
+        <Container
+          pos={messagePosition}
+          sx={{ backgroundColor: isMe ? "secondary.main" : "divider" }}
+        >
           {item.message}
         </Container>
         <Typography> {user && user.displayName} </Typography>
       </MessageAndInfo>
-      <Avatar />
+      <Avatar src={user && user?.photoURL} />
     </Wrapper>
   );
 };

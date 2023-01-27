@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useContext } from "react";
+import React, {FC, useContext} from "react";
 import PageContainer from "../styles/PageContainer";
 import { Button } from "@mui/material";
 import InputBar from "./InputBar";
@@ -11,7 +11,7 @@ import {Context} from "../../App";
 type ChatPageProps = {
   user: User;
 };
-const ChatPage: FunctionComponent<ChatPageProps> = ({ user }) => {
+const ChatPage: FC<ChatPageProps> = ({ user }) => {
   const { firestore } = useContext(Context);
 
   const handleDelete = async () => {

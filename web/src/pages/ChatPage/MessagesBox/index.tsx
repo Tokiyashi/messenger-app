@@ -34,7 +34,7 @@ const MessagesBox: FunctionComponent<MessagesBoxProps> = ({ user }) => {
 
   return (
     <Container>
-      <MessagesList messages={messages} />
+      <MessagesList user={user} messages={messages} />
     </Container>
   );
 };

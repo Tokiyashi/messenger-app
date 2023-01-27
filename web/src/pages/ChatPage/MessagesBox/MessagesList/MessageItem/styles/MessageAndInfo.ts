@@ -1,9 +1,12 @@
 import { Box, styled } from "@mui/material";
 
+type WrapperProps = {
+    pos: "left" | "right";
+};
+
 const MessageAndInfo = styled(Box)`
+  align-items: ${({pos}: WrapperProps) => pos === 'left' ? 'flex-start' : 'flex-end'};
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column-reverse;
 `;
 
