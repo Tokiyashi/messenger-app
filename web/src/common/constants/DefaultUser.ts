@@ -2,7 +2,7 @@ export const DEFAULT_USER = {
   email: "",
   uid: "",
   displayName: "",
-  photoUrl: "",
+  photoURL: "",
   phoneNumber: "",
   createdAt: new Date(),
 };

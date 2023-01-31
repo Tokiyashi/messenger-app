@@ -6,7 +6,9 @@ import Wrapper from "./styles/Wrapper";
 import { userService } from "../../../../../services/UserService";
 import useAsyncEffect from "use-async-effect";
 import MessageAndInfo from "./styles/MessageAndInfo";
+import { MessagePosition } from "../../../../../common/enums/MessagePositions";
 import { useAppSelector } from "../../../../../utils/hooks/redux";
+import { isNull } from "lodash";
 
 type MessageItemProps = {
   item: ChatMessage;
@@ -14,15 +16,21 @@ type MessageItemProps = {
 
 const MessageItem: FunctionComponent<MessageItemProps> = ({ item }) => {
   const [fetchedUser, setFetchedUser] = useState<any | undefined>();
+  const [isMe, setIsMe] = useState(false);
   const { user } = useAppSelector((state) => state.userReducer);
 
   useAsyncEffect(async () => {
     const result = await userService.getUserByUid(item.uid);
-    setFetchedUser(result);
-  }, []);
+    if (!result) {
+      return;
+    }
 
-  const isMe = user && user.uid === item.uid;
-  const messagePosition = isMe ? "right" : "left";
+    const checkIsMe: boolean = !isNull(user) && user.uid === item.uid;
+    setIsMe(checkIsMe);
+    setFetchedUser(result);
+  }, [item]);
+
+  const messagePosition = isMe ? MessagePosition.RIGHT : MessagePosition.LEFT;
 
   if (!fetchedUser) return <></>;
 

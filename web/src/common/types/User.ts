@@ -1,9 +1,8 @@
 export type User = {
   displayName: string;
   uid: string;
-  email:string;
+  email: string;
   phoneNumber: string;
-  photoUrl: string;
+  photoURL: string;
   createdAt: Date;
-
-}
+};

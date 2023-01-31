@@ -17,7 +17,7 @@ class UserService {
     return result;
   };
 
-  createUser = async (user: firebase.User) => {
+  createUser = async (user: User) => {
     if (await this.getUserByUid(user.uid)) {
       return;
     }

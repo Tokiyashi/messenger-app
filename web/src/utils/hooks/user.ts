@@ -3,8 +3,9 @@ import { userSlice } from "../../store/reducers/UserSlice";
 import { useEffect } from "react";
 import firebase from "firebase/compat";
 import { User } from "../../common/types/User";
-import _ from "lodash";
+import _, { isNull } from "lodash";
 import { DEFAULT_USER } from "../../common/constants/DefaultUser";
+import { userService } from "../../services/UserService";
 
 export const useListenUser = () => {
   const { user } = useAppSelector((state) => state.userReducer);
@@ -13,8 +14,15 @@ export const useListenUser = () => {
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged((user) => {
-      if (!user) dispatch(setUser(null));
-      dispatch(setUser(_.pick(user, Object.keys(DEFAULT_USER)) as User));
+      const fetchedUser = _.pick(user, Object.keys(DEFAULT_USER)) as User;
+
+      if (isNull(fetchedUser)) {
+        dispatch(setUser(null));
+        return;
+      }
+      const foundUserFromCollection = userService.getUserByUid(fetchedUser.uid);
+      !foundUserFromCollection && userService.createUser(fetchedUser);
+      dispatch(setUser(fetchedUser));
     });
   }, []);
   return { user };
