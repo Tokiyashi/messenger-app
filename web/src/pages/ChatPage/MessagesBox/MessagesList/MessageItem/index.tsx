@@ -14,21 +14,17 @@ type MessageItemProps = {
 
 const MessageItem: FunctionComponent<MessageItemProps> = ({ item }) => {
   const [fetchedUser, setFetchedUser] = useState<any | undefined>();
-  const [isLoading, setIsLoading] = useState(false);
   const { user } = useAppSelector((state) => state.userReducer);
 
   useAsyncEffect(async () => {
-    setIsLoading(true);
-    try {
-      const result = await userService.getUserByUid(item.uid);
-      setFetchedUser(result);
-    } finally {
-      setIsLoading(false);
-    }
+    const result = await userService.getUserByUid(item.uid);
+    setFetchedUser(result);
   }, []);
 
   const isMe = user && user.uid === item.uid;
   const messagePosition = isMe ? "right" : "left";
+
+  if (!fetchedUser) return <></>;
 
   return (
     <Wrapper pos={messagePosition}>
