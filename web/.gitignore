@@ -8,7 +8,6 @@ pnpm-debug.log*
 lerna-debug.log*
 .firebase/*
 .eslintcache
-dist
 
 node_modules
 dist
@@ -28,3 +27,4 @@ dist-ssr
 *.xml
 /vite.config.ts.timestamp-1674750234113.mjs
 /vite.config.ts.timestamp-1674763033488.mjs
+/vite.config.ts.timestamp-1674850461266.mjs

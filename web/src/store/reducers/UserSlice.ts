@@ -1,27 +1,26 @@
-import {createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {User} from "../../common/types/User";
-import {DEFAULT_USER} from "../../common/constants/DefaultUser";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { User } from "../../common/types/User";
 
 interface UserState {
-  user: User;
+  user: User | null;
   isLoading: boolean;
   error: string;
 }
 
 const initialState: UserState = {
-  user: DEFAULT_USER,
+  user: null,
   isLoading: false,
-  error: ''
-}
+  error: "",
+};
 
 export const userSlice = createSlice({
-  name: 'slice',
+  name: "slice",
   initialState,
-  reducers:{
-    setUser(state, action: PayloadAction<User>){
-      state.user = action.payload
-    }
-  }
-})
+  reducers: {
+    setUser(state, action: PayloadAction<User | null>) {
+      state.user = action.payload;
+    },
+  },
+});
 
 export default userSlice.reducer;

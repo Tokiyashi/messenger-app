@@ -4,8 +4,8 @@ import React, { createContext } from "react";
 import { red } from "@mui/material/colors";
 import Pages from "./pages";
 import AuthPage from "./pages/AuthPage";
-import { useAppSelector} from "./utils/hooks/redux";
-import {useListenUser} from "./utils/hooks/user";
+import { useAppSelector } from "./utils/hooks/redux";
+import { useListenUser } from "./utils/hooks/user";
 
 //TODO
 //sidebar
@@ -13,6 +13,7 @@ import {useListenUser} from "./utils/hooks/user";
 //storybook
 // tests
 //cicd
+//React query
 
 //TODO
 // Add user type.
@@ -31,17 +32,16 @@ firebase.initializeApp({
 
 const auth = firebase.auth();
 const firestore = firebase.firestore();
- const Context = createContext({ firebase, auth, firestore });
+const Context = createContext({ firebase, auth, firestore });
 
 function App() {
-
-  useListenUser()
-  const user = useAppSelector(state => state.userReducer.user)
+  useListenUser();
+  const user = useAppSelector((state) => state.userReducer.user);
   const darkTheme = createTheme({
     palette: {
       mode: "dark",
       background: {
-        default: "#222222"
+        default: "#222222",
       },
       primary: {
         main: red[500],
@@ -55,7 +55,7 @@ function App() {
   return (
     <Context.Provider value={{ firebase, auth, firestore }}>
       <ThemeProvider theme={darkTheme}>
-        {user ? <Pages /> : <AuthPage />}
+        {!!user ? <Pages /> : <AuthPage />}
       </ThemeProvider>
     </Context.Provider>
   );
