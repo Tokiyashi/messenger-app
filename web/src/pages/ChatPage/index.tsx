@@ -1,30 +1,23 @@
-import React, {FC, useContext} from "react";
+import React, { FC, useContext } from "react";
 import PageContainer from "../styles/PageContainer";
-import { Button } from "@mui/material";
 import InputBar from "./InputBar";
 import MessagesBox from "./MessagesBox";
 import Header from "../../components/Header";
-import {Context} from "../../App";
-
+import Sidebar from "./Sidebar";
+import FlexContainer from "./styles/FlexContainer";
+import ChatWindow from "./styles/ChatWindow";
 
 const ChatPage: FC = () => {
-  const { firestore } = useContext(Context);
-
-  const handleDelete = async () => {
-    await firestore
-      .collection("messages")
-      .get()
-      .then((querySnapshot) => {
-        querySnapshot.docs.forEach((doc) => doc.ref.delete());
-      });
-  };
-
   return (
     <PageContainer>
       <Header />
-      <Button onClick={handleDelete}> Delete </Button>
-      <MessagesBox  />
-      <InputBar  />
+      <FlexContainer>
+        <Sidebar />
+        <ChatWindow>
+          <MessagesBox />
+          <InputBar />
+        </ChatWindow>
+      </FlexContainer>
     </PageContainer>
   );
 };

@@ -1,7 +1,7 @@
 import { Paper, styled } from "@mui/material";
 
 const Container = styled(Paper)`
-  width: 80%;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
