@@ -11,18 +11,16 @@ import { ChatMessage } from "../../../common/types/chatMessage";
 import SendIcon from "@mui/icons-material/Send";
 import SendButton from "./styles/SendButton";
 import { Context } from "../../../App";
-import {useAppSelector} from "../../../utils/hooks/redux";
-
+import { useAppSelector } from "../../../utils/hooks/redux";
 
 const InputBar: FunctionComponent = () => {
-
-  const {user} = useAppSelector(state => state.userReducer)
+  const { user } = useAppSelector((state) => state.userReducer);
   const [value, setValue] = useState("");
   const { firestore } = useContext(Context);
   const handleAddMessage = async () => {
     setValue("");
 
-    if (!value) {
+    if (!value || !user) {
       return;
     }
     const message: ChatMessage = {

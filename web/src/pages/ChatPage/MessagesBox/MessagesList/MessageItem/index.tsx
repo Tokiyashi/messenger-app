@@ -27,7 +27,7 @@ const MessageItem: FunctionComponent<MessageItemProps> = ({ item }) => {
     }
   }, []);
 
-  const isMe = user.uid === item.uid;
+  const isMe = user && user.uid === item.uid;
   const messagePosition = isMe ? "right" : "left";
 
   return (

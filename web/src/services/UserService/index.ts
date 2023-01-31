@@ -18,7 +18,7 @@ class UserService {
   };
 
   createUser = async (user: firebase.User) => {
-    if (!!(await this.getUserByUid(user.uid))) {
+    if (await this.getUserByUid(user.uid)) {
       return;
     }
     const { displayName, uid, phoneNumber, email, photoURL } = user;

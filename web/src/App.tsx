@@ -55,7 +55,7 @@ function App() {
   return (
     <Context.Provider value={{ firebase, auth, firestore }}>
       <ThemeProvider theme={darkTheme}>
-        {!!user ? <Pages /> : <AuthPage />}
+        {user?.uid ? <Pages /> : <AuthPage />}
       </ThemeProvider>
     </Context.Provider>
   );

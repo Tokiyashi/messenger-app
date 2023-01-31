@@ -1,4 +1,4 @@
-import {Box, Button, Typography} from "@mui/material";
+import { Box, Button, Typography } from "@mui/material";
 import React, { useContext } from "react";
 import { Context } from "../../App";
 import Container from "./styles/Container";
@@ -17,7 +17,9 @@ const Header = () => {
       <Content>
         <Typography> TokiChat </Typography>
         <Box>
-          <Typography color="text.contrast"> {user.displayName} </Typography>
+          <Typography color="text.contrast">
+            {user && user.displayName}
+          </Typography>
           <Button fullWidth variant="outlined" onClick={handleSignOut}>
             <Typography> Sign Out </Typography>
           </Button>
