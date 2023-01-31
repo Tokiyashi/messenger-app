@@ -4,13 +4,19 @@ import { Button, Typography } from "@mui/material";
 import Content from "./styles/Content";
 import { Context } from "../../App";
 import { userService } from "../../services/UserService";
+import _ from "lodash";
+import { DEFAULT_USER } from "../../common/constants/DefaultUser";
+import { User } from "../../common/types/User";
 
 const AuthPage = () => {
   const { firebase, auth } = useContext(Context);
   const signInWithGoogle = () => {
     const provider = new firebase.auth.GoogleAuthProvider();
     return auth.signInWithPopup(provider).then(async (data) => {
-      data?.user && (await userService.createUser(data.user));
+      data?.user &&
+        (await userService.createUser(
+          _.pick(data.user, Object.keys(DEFAULT_USER)) as User
+        ));
     });
   };
 
