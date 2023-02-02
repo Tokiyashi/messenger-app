@@ -5,4 +5,5 @@ export type User = {
   phoneNumber: string;
   photoURL: string;
   createdAt: Date;
+  chatId: string;
 };

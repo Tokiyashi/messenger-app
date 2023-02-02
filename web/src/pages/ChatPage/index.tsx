@@ -10,10 +10,10 @@ import ChatWindow from "./styles/ChatWindow";
 const ChatPage: FC = () => {
   return (
     <PageContainer>
-      <Header />
       <FlexContainer>
         <Sidebar />
         <ChatWindow>
+          <Header />
           <MessagesBox />
           <InputBar />
         </ChatWindow>

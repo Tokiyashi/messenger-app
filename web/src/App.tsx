@@ -44,7 +44,7 @@ function App() {
         default: "#222222",
       },
       primary: {
-        main: red[500],
+        main: red[400],
       },
       secondary: {
         main: "#04674F",

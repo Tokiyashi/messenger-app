@@ -1,5 +1,6 @@
 import firebase from "firebase/compat";
 import { User } from "../../common/types/User";
+import { nanoid } from "nanoid";
 
 class UserService {
   getUsers = async () => {
@@ -28,6 +29,7 @@ class UserService {
       phoneNumber,
       email,
       photoURL,
+      chatId: nanoid(),
       createdAt: firebase.firestore.FieldValue.serverTimestamp(),
     });
   };
@@ -43,6 +45,24 @@ class UserService {
         querySnapshot.docs.forEach((doc) => {
           const user = doc.data() as User;
           if (user.uid === uid) {
+            result = user;
+          }
+        });
+      });
+    return result;
+  };
+
+  getUserByChatId = async (chatId: string) => {
+    let result: User | undefined;
+
+    await firebase
+      .firestore()
+      .collection("users")
+      .get()
+      .then((querySnapshot) => {
+        querySnapshot.docs.forEach((doc) => {
+          const user = doc.data() as User;
+          if (user.chatId === chatId) {
             result = user;
           }
         });

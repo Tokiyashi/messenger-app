@@ -6,6 +6,7 @@ const Pages: FunctionComponent = () => {
   return (
     <BrowserRouter>
       <Routes>
+        <Route path="/:chatId" element={<ChatPage />} />
         <Route path="/" element={<ChatPage />} />
       </Routes>
     </BrowserRouter>

@@ -4,7 +4,6 @@ import React, {
   useContext,
   useState,
 } from "react";
-import { TextField } from "@mui/material";
 import Container from "./styles/Container";
 import firebase from "firebase/compat";
 import { ChatMessage } from "../../../common/types/chatMessage";
@@ -12,8 +11,11 @@ import SendIcon from "@mui/icons-material/Send";
 import SendButton from "./styles/SendButton";
 import { Context } from "../../../App";
 import { useAppSelector } from "../../../utils/hooks/redux";
+import StyledTextField from "./styles/StyledTextField";
+import { useParams } from "react-router-dom";
 
 const InputBar: FunctionComponent = () => {
+  const { chatId } = useParams();
   const { user } = useAppSelector((state) => state.userReducer);
   const [value, setValue] = useState("");
   const { firestore } = useContext(Context);
@@ -27,6 +29,7 @@ const InputBar: FunctionComponent = () => {
       message: value,
       uid: user.uid,
       createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+      chatId,
     };
     await firestore.collection("messages").add(message);
   };
@@ -43,10 +46,12 @@ const InputBar: FunctionComponent = () => {
 
   return (
     <Container sx={{ backgroundColor: "divider" }}>
-      <TextField
+      <StyledTextField
+        variant="filled"
         value={value}
         placeholder="Type something..."
         onKeyDown={handleKeyDown}
+        fullWidth
         onChange={(e) => handleValueChange(e.target.value)}
       />
       <SendButton variant="contained" onClick={handleAddMessage}>

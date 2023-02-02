@@ -4,7 +4,7 @@ const Container = styled(Box)`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 30%;
+  width: 20%;
   flex-direction: column;
   height: 100%;
 `;
