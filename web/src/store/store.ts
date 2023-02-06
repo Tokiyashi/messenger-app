@@ -1,12 +1,13 @@
 import { combineReducers } from "redux";
-import {configureStore, getDefaultMiddleware} from "@reduxjs/toolkit";
+import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
 import userReducer from "./reducers/UserSlice";
+import themeReducer from "./reducers/ThemeSlice";
 
-const rootReducer = combineReducers({ userReducer });
+const rootReducer = combineReducers({ userReducer, themeReducer });
 
 const customizedMiddleware = getDefaultMiddleware({
-  serializableCheck: false
-})
+  serializableCheck: false,
+});
 export const setupStore = () => {
   return configureStore({
     middleware: customizedMiddleware,

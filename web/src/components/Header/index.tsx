@@ -12,17 +12,17 @@ import { User } from "../../common/types/User";
 const Header = () => {
   const { auth } = useContext(Context);
   const { user } = useAppSelector((state) => state.userReducer);
-  const { chatId } = useParams();
+  const { companionId } = useParams();
   const [currentUser, setCurrentUser] = useState<User | undefined>();
   const handleSignOut = () => {
     return auth.signOut();
   };
 
   useAsyncEffect(async () => {
-    const result = chatId && (await userService.getUserByChatId(chatId));
+    const result = companionId && (await userService.getUserByUid(companionId));
 
     result && setCurrentUser(result);
-  }, [chatId]);
+  }, [companionId]);
 
   return (
     <Container sx={{ backgroundColor: "divider" }}>

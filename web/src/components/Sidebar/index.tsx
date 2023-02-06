@@ -1,8 +1,9 @@
 import React, { useContext } from "react";
 import Container from "./styles/Container";
 import { Button } from "@mui/material";
-import { Context } from "../../../App";
 import UserList from "./UserList";
+import { Context } from "../../App";
+import ThemePicker from "../ThemePicker";
 
 const Sidebar = () => {
   const { firestore } = useContext(Context);
@@ -20,6 +21,7 @@ const Sidebar = () => {
     <Container sx={{ backgroundColor: "divider" }}>
       <UserList />
       <Button onClick={handleDelete}> Delete </Button>
+      <ThemePicker />
     </Container>
   );
 };

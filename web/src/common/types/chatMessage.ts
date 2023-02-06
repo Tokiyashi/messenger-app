@@ -1,8 +1,13 @@
-import firebase from "firebase/compat";
-
-export type ChatMessage = {
+interface Message {
   message: string;
   uid: string;
-  createdAt: firebase.firestore.FieldValue;
-  chatId: string | undefined;
-};
+  createdAt: Date;
+}
+
+export interface ChatMessage extends Message {
+  chatId: string;
+}
+
+export interface DirectMessage extends Message {
+  receiverId: string;
+}

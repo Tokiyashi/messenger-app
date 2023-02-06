@@ -1,7 +1,6 @@
 import firebase from "firebase/compat";
 import { createTheme, ThemeProvider } from "@mui/material";
 import React, { createContext } from "react";
-import { red } from "@mui/material/colors";
 import Pages from "./pages";
 import AuthPage from "./pages/AuthPage";
 import { useAppSelector } from "./utils/hooks/redux";
@@ -37,6 +36,7 @@ const Context = createContext({ firebase, auth, firestore });
 function App() {
   useListenUser();
   const user = useAppSelector((state) => state.userReducer.user);
+  const { color } = useAppSelector((state) => state.themeReducer);
   const darkTheme = createTheme({
     palette: {
       mode: "dark",
@@ -44,7 +44,7 @@ function App() {
         default: "#222222",
       },
       primary: {
-        main: red[400],
+        main: color,
       },
       secondary: {
         main: "#04674F",

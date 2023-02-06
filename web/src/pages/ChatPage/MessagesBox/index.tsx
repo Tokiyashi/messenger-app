@@ -10,20 +10,24 @@ import { ChatMessage } from "../../../common/types/chatMessage";
 import MessagesList from "./MessagesList";
 import { Context } from "../../../App";
 import { useParams } from "react-router-dom";
-import { useAppSelector } from "../../../utils/hooks/redux";
 
 const MessagesBox: FunctionComponent = () => {
   const { chatId } = useParams();
 
   const { firestore } = useContext(Context);
   const [messages, setMessages] = useState<ChatMessage[]>([]);
-  const query: Query = firestore
-    .collection("messages")
-    .where("chatId", "==", chatId)
-    .orderBy("createdAt")
-    .limitToLast(18);
 
   useEffect(() => {
+    if (!chatId) {
+      return;
+    }
+
+    const query: Query = firestore
+      .collection("messages")
+      .where("chatId", "==", chatId)
+      .orderBy("createdAt")
+      .limitToLast(18);
+
     query.onSnapshot((querySnapshot) => {
       const items: ChatMessage[] = [];
       querySnapshot.forEach((doc) => {
@@ -34,9 +38,7 @@ const MessagesBox: FunctionComponent = () => {
   }, [chatId]);
 
   return (
-    <Container>
-      <MessagesList messages={messages} />
-    </Container>
+    <Container>{chatId && <MessagesList messages={messages} />}</Container>
   );
 };
 

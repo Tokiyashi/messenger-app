@@ -14,21 +14,21 @@ import StyledTextField from "./styles/StyledTextField";
 import { useParams } from "react-router-dom";
 
 const InputBar: FunctionComponent = () => {
-  const { chatId } = useParams();
+  const { companionId } = useParams();
   const { user } = useAppSelector((state) => state.userReducer);
   const [value, setValue] = useState("");
   const { firestore } = useContext(Context);
   const handleAddMessage = async () => {
     setValue("");
 
-    if (!value || !user || !chatId) {
+    if (!value || !user || !companionId) {
       return;
     }
     const message = {
+      receiverId: companionId,
       message: value,
       uid: user.uid,
       createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-      chatId,
     };
     await firestore.collection("messages").add(message);
   };

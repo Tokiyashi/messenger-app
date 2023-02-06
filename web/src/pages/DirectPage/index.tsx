@@ -1,13 +1,13 @@
-import React, { FC } from "react";
+import React from "react";
 import PageContainer from "../styles/PageContainer";
-import InputBar from "./InputBar";
-import MessagesBox from "./MessagesBox";
-import Header from "../../components/Header";
 import FlexContainer from "../styles/FlexContainer";
 import ChatWindow from "../styles/ChatWindow";
+import Header from "../../components/Header";
+import InputBar from "./InputBar";
+import MessagesBox from "./MessagesBox";
 import Sidebar from "../../components/Sidebar";
 
-const ChatPage: FC = () => {
+const DirectPage = () => {
   return (
     <PageContainer>
       <FlexContainer>
@@ -22,4 +22,4 @@ const ChatPage: FC = () => {
   );
 };
 
-export default ChatPage;
+export default DirectPage;
