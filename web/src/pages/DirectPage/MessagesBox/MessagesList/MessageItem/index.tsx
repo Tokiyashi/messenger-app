@@ -41,7 +41,9 @@ const MessageItem: FunctionComponent<MessageItemProps> = ({ item }) => {
           pos={messagePosition}
           sx={{ backgroundColor: isMe ? "primary.main" : "divider" }}
         >
-          <Typography color="primary.contrastText">{item.message}</Typography>
+          <Typography color={isMe ? "primary.contrastText" : "white"}>
+            {item.message}
+          </Typography>
         </Container>
         <Typography textAlign="center">
           {fetchedUser && fetchedUser.displayName}
