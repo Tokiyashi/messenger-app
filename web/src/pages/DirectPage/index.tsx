@@ -2,10 +2,10 @@ import React from "react";
 import PageContainer from "../styles/PageContainer";
 import FlexContainer from "../styles/FlexContainer";
 import ChatWindow from "../styles/ChatWindow";
-import Header from "../../components/Header";
+import Header from "../../components/widgets/Header";
 import InputBar from "./InputBar";
-import MessagesBox from "./MessagesBox";
-import Sidebar from "../../components/Sidebar";
+import MessagesBox from "../../components/logic/MessagesBox";
+import Sidebar from "../../components/widgets/Sidebar";
 
 const DirectPage = () => {
   return (

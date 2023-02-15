@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from "react";
 import Container from "./styles/Container";
 import MessagesList from "./MessagesList";
-import { useFetchDirectMessages } from "../../../utils/hooks/fetchDirectMessages";
+import { useFetchDirectMessages } from "../../../shared/hooks/fetchDirectMessages";
 import { useParams } from "react-router-dom";
 
 const MessagesBox: FunctionComponent = () => {

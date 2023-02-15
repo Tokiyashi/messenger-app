@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useState } from "react";
-import { ChatMessage } from "../../../../../common/types/chatMessage";
+import { DirectMessage } from "../../../../../common/types/chatMessage";
 import Container from "./styles/Container";
 import { Avatar, Typography } from "@mui/material";
 import Wrapper from "./styles/Wrapper";
@@ -7,11 +7,11 @@ import { userService } from "../../../../../services/UserService";
 import useAsyncEffect from "use-async-effect";
 import MessageAndInfo from "./styles/MessageAndInfo";
 import { MessagePosition } from "../../../../../common/enums/MessagePositions";
-import { useAppSelector } from "../../../../../utils/hooks/redux";
+import { useAppSelector } from "../../../../../shared/hooks/redux";
 import { isNull } from "lodash";
 
 type MessageItemProps = {
-  item: ChatMessage;
+  item: DirectMessage;
 };
 
 const MessageItem: FunctionComponent<MessageItemProps> = ({ item }) => {
@@ -39,9 +39,11 @@ const MessageItem: FunctionComponent<MessageItemProps> = ({ item }) => {
       <MessageAndInfo pos={messagePosition}>
         <Container
           pos={messagePosition}
-          sx={{ backgroundColor: isMe ? "secondary.main" : "divider" }}
+          sx={{ backgroundColor: isMe ? "primary.main" : "divider" }}
         >
-          {item.message}
+          <Typography color={isMe ? "primary.contrastText" : "white"}>
+            {item.message}
+          </Typography>
         </Container>
         <Typography textAlign="center">
           {fetchedUser && fetchedUser.displayName}

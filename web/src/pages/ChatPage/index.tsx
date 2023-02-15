@@ -2,10 +2,10 @@ import React, { FC } from "react";
 import PageContainer from "../styles/PageContainer";
 import InputBar from "./InputBar";
 import MessagesBox from "./MessagesBox";
-import Header from "../../components/Header";
+import Header from "../../components/widgets/Header";
 import FlexContainer from "../styles/FlexContainer";
 import ChatWindow from "../styles/ChatWindow";
-import Sidebar from "../../components/Sidebar";
+import Sidebar from "../../components/widgets/Sidebar";
 
 const ChatPage: FC = () => {
   return (

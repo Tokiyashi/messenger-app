@@ -1,9 +1,9 @@
 import React, { FunctionComponent } from "react";
 import Container from "./styles/Container";
 import { useNavigate } from "react-router-dom";
-import { User } from "../../../../common/types/User";
+import { User } from "../../../../../common/types/User";
 import { Avatar, Typography } from "@mui/material";
-import { useFetchDirectMessages } from "../../../../utils/hooks/fetchDirectMessages";
+import { useFetchDirectMessages } from "../../../../../shared/hooks/fetchDirectMessages";
 import TextBlock from "./styles/TextBlock";
 
 type UserItemProps = {

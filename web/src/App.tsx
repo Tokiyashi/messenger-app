@@ -3,8 +3,8 @@ import { createTheme, ThemeProvider } from "@mui/material";
 import React, { createContext } from "react";
 import Pages from "./pages";
 import AuthPage from "./pages/AuthPage";
-import { useAppSelector } from "./utils/hooks/redux";
-import { useListenUser } from "./utils/hooks/user";
+import { useAppSelector } from "./shared/hooks/redux";
+import { useListenUser } from "./shared/hooks/user";
 
 //TODO
 //sidebar

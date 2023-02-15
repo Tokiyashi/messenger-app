@@ -1,7 +1,7 @@
 import { Box, Button } from "@mui/material";
 import React, { useState } from "react";
 import { BlockPicker } from "react-color";
-import { useAppDispatch } from "../../utils/hooks/redux";
+import { useAppDispatch } from "../../shared/hooks/redux";
 import { themeSlice } from "../../store/reducers/ThemeSlice";
 
 const ThemePicker = () => {

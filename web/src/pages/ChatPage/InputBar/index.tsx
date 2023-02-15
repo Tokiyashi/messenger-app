@@ -9,7 +9,7 @@ import firebase from "firebase/compat";
 import SendIcon from "@mui/icons-material/Send";
 import SendButton from "./styles/SendButton";
 import { Context } from "../../../App";
-import { useAppSelector } from "../../../utils/hooks/redux";
+import { useAppSelector } from "../../../shared/hooks/redux";
 import StyledTextField from "./styles/StyledTextField";
 import { useParams } from "react-router-dom";
 
