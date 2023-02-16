@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import PageContainer from "../styles/PageContainer";
 import { Button, Typography } from "@mui/material";
 import Content from "./styles/Content";
-import { Context } from "../../App";
+import { Context } from "../../app/App";
 import { userService } from "../../shared/services/UserService";
 import _ from "lodash";
 import { DEFAULT_USER } from "../../entities/User/constants/DefaultUser";

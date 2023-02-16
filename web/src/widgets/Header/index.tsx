@@ -1,6 +1,6 @@
 import { Box, Button, Typography } from "@mui/material";
 import React, { useContext, useState } from "react";
-import { Context } from "../../App";
+import { Context } from "../../app/App";
 import Container from "./styles/Container";
 import { useAppSelector } from "../../shared/hooks/redux";
 import Content from "./styles/Content";

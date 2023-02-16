@@ -8,7 +8,7 @@ import Container from "./styles/Container";
 import firebase from "firebase/compat";
 import SendIcon from "@mui/icons-material/Send";
 import SendButton from "./styles/SendButton";
-import { Context } from "../../../App";
+import { Context } from "../../../app/App";
 import { useAppSelector } from "../../../shared/hooks/redux";
 import StyledTextField from "./styles/StyledTextField";
 import { useParams } from "react-router-dom";

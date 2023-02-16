@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import Container from "./styles/Container";
 import { Button } from "@mui/material";
 import UserList from "../../features/UserList";
-import { Context } from "../../App";
+import { Context } from "../../app/App";
 import ThemePicker from "../../features/ThemePicker";
 
 const Sidebar = () => {
