@@ -50,4 +50,4 @@ jobs:
 
       - name: "🔍 lint code"
         working-directory: ./web
-        run:  npm run lint --if-present
+        run: eslint --fix "**/*.{ts,tsx}"
