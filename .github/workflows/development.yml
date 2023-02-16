@@ -48,6 +48,14 @@ jobs:
         working-directory: ./web
         run: npm i -g npm@latest
 
-      - name: "🔍 Lint"
+      - name: "🔍 Install Linter"
         working-directory: ./web
-        run: npm run lint
+        run: npm install -g eslint
+
+      - name: "🔍 Init Linter"
+        working-directory: ./web
+        run: eslint --init
+
+      - name: "🔍 lint code"
+        working-directory: ./web
+        run: eslint --fix "**/*.{ts,tsx}"
