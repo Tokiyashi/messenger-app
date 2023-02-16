@@ -56,6 +56,10 @@ jobs:
         working-directory: ./web
         run: eslint --init
 
+      - name: "🔍 install plugin"
+        working-directory: ./web
+        run: npm install eslint-plugin-react@latest --save-dev
+
       - name: "🔍 lint code"
         working-directory: ./web
         run: eslint --fix "**/*.{ts,tsx}"
