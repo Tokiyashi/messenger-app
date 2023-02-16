@@ -3,10 +3,10 @@ import PageContainer from "../styles/PageContainer";
 import { Button, Typography } from "@mui/material";
 import Content from "./styles/Content";
 import { Context } from "../../App";
-import { userService } from "../../services/UserService";
+import { userService } from "../../shared/services/UserService";
 import _ from "lodash";
-import { DEFAULT_USER } from "../../common/constants/DefaultUser";
-import { User } from "../../common/types/User";
+import { DEFAULT_USER } from "../../entities/User/constants/DefaultUser";
+import { User } from "../../shared/types/User";
 
 const AuthPage = () => {
   const { firebase, auth } = useContext(Context);

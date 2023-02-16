@@ -1,11 +1,11 @@
 import React, { FC } from "react";
 import PageContainer from "../styles/PageContainer";
 import InputBar from "./InputBar";
-import MessagesBox from "./MessagesBox";
-import Header from "../../components/widgets/Header";
+import Header from "../../widgets/Header";
 import FlexContainer from "../styles/FlexContainer";
 import ChatWindow from "../styles/ChatWindow";
-import Sidebar from "../../components/widgets/Sidebar";
+import Sidebar from "../../widgets/Sidebar";
+import ChatBox from "../../widgets/DirectBox";
 
 const ChatPage: FC = () => {
   return (
@@ -14,7 +14,7 @@ const ChatPage: FC = () => {
         <Sidebar />
         <ChatWindow>
           <Header />
-          <MessagesBox />
+          <ChatBox />
           <InputBar />
         </ChatWindow>
       </FlexContainer>

@@ -1,10 +1,10 @@
 import React, { FunctionComponent } from "react";
 import Container from "./styles/Container";
-import MessagesList from "./MessagesList";
-import { useFetchDirectMessages } from "../../../shared/hooks/fetchDirectMessages";
+import { useFetchDirectMessages } from "../DirectBox/hooks/fetchDirectMessages";
 import { useParams } from "react-router-dom";
+import MessagesList from "../../features/MessagesList";
 
-const MessagesBox: FunctionComponent = () => {
+const ChatBox: FunctionComponent = () => {
   const { companionId } = useParams();
   const messages = useFetchDirectMessages(companionId || "");
 
@@ -15,4 +15,4 @@ const MessagesBox: FunctionComponent = () => {
   );
 };
 
-export default MessagesBox;
+export default ChatBox;

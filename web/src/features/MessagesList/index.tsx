@@ -1,10 +1,10 @@
 import React, { FunctionComponent, useEffect, useRef } from "react";
-import { DirectMessage } from "../../../../common/types/chatMessage";
-import MessageItem from "./MessageItem";
+import MessageItem from "../../entities/Message/ui/MessageItem";
 import Container from "./styles/Container";
 import ItemsWrapper from "./styles/ItemsWrapper";
 import { isNull } from "lodash";
 import { Box } from "@mui/material";
+import { DirectMessage } from "../../shared/types/chatMessage";
 
 type MessagesListProps = {
   messages: DirectMessage[];

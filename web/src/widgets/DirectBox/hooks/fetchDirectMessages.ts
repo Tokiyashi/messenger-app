@@ -1,8 +1,8 @@
 import { useContext, useEffect, useState } from "react";
 import { Query } from "@firebase/firestore-types";
-import { DirectMessage } from "../../common/types/chatMessage";
-import { Context } from "../../App";
-import { useAppSelector } from "./redux";
+import { DirectMessage } from "../../../shared/types/chatMessage";
+import { Context } from "../../../App";
+import { useAppSelector } from "../../../shared/hooks/redux";
 
 export const useFetchDirectMessages = (companionId: string) => {
   const { firestore } = useContext(Context);

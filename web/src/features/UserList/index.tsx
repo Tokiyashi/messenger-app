@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Query } from "@firebase/firestore-types";
 import UserItem from "./UserItem";
-import { Context } from "../../../../App";
-import { User } from "../../../../common/types/User";
+import { Context } from "../../App";
+import { User } from "../../shared/types/User";
 
 const UserList = () => {
   const { firestore } = useContext(Context);

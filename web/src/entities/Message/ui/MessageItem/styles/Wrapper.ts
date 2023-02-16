@@ -1,5 +1,5 @@
 import { Box, styled } from "@mui/material";
-import { MessagePosition } from "../../../../../../common/enums/MessagePositions";
+import { MessagePosition } from "../../../model/MessagePositions";
 
 type WrapperProps = {
   pos: MessagePosition;

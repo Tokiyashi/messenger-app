@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
 import Container from "./styles/Container";
 import { Button } from "@mui/material";
-import UserList from "./UserList";
-import { Context } from "../../../App";
-import ThemePicker from "../../../features/ThemePicker";
+import UserList from "../../features/UserList";
+import { Context } from "../../App";
+import ThemePicker from "../../features/ThemePicker";
 
 const Sidebar = () => {
   const { firestore } = useContext(Context);

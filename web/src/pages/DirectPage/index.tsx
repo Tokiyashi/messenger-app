@@ -2,10 +2,10 @@ import React from "react";
 import PageContainer from "../styles/PageContainer";
 import FlexContainer from "../styles/FlexContainer";
 import ChatWindow from "../styles/ChatWindow";
-import Header from "../../components/widgets/Header";
+import Header from "../../widgets/Header";
 import InputBar from "./InputBar";
-import MessagesBox from "../../components/logic/MessagesBox";
-import Sidebar from "../../components/widgets/Sidebar";
+import Sidebar from "../../widgets/Sidebar";
+import DirectBox from "../../widgets/DirectBox";
 
 const DirectPage = () => {
   return (
@@ -14,7 +14,7 @@ const DirectPage = () => {
         <Sidebar />
         <ChatWindow>
           <Header />
-          <MessagesBox />
+          <DirectBox />
           <InputBar />
         </ChatWindow>
       </FlexContainer>

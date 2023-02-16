@@ -1,13 +1,13 @@
 import { Box, Button, Typography } from "@mui/material";
 import React, { useContext, useState } from "react";
-import { Context } from "../../../App";
+import { Context } from "../../App";
 import Container from "./styles/Container";
-import { useAppSelector } from "../../../shared/hooks/redux";
+import { useAppSelector } from "../../shared/hooks/redux";
 import Content from "./styles/Content";
 import { useParams } from "react-router-dom";
 import useAsyncEffect from "use-async-effect";
-import { userService } from "../../../services/UserService";
-import { User } from "../../../common/types/User";
+import { userService } from "../../shared/services/UserService";
+import { User } from "../../shared/types/User";
 
 const Header = () => {
   const { auth } = useContext(Context);

@@ -1,13 +1,13 @@
 import React, { FunctionComponent, useState } from "react";
-import { DirectMessage } from "../../../../../common/types/chatMessage";
+import { DirectMessage } from "../../../../shared/types/chatMessage";
 import Container from "./styles/Container";
 import { Avatar, Typography } from "@mui/material";
 import Wrapper from "./styles/Wrapper";
-import { userService } from "../../../../../services/UserService";
+import { userService } from "../../../../shared/services/UserService";
 import useAsyncEffect from "use-async-effect";
 import MessageAndInfo from "./styles/MessageAndInfo";
-import { MessagePosition } from "../../../../../common/enums/MessagePositions";
-import { useAppSelector } from "../../../../../shared/hooks/redux";
+import { MessagePosition } from "../../model/MessagePositions";
+import { useAppSelector } from "../../../../shared/hooks/redux";
 import { isNull } from "lodash";
 
 type MessageItemProps = {
