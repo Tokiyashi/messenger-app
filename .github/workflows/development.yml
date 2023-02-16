@@ -30,7 +30,7 @@ jobs:
         uses: bahmutov/npm-install@v1
 
       - name: "🔍 run tests"
-        run: cd web && npm run test --if-present
+        run: npm run test --if-present
 
   lint:
     name: Code standards
@@ -52,4 +52,4 @@ jobs:
         uses: bahmutov/npm-install@v1
 
       - name: "🔍 lint code"
-        run: cd web && npm run lint --if-present
+        run:  npm run lint --if-present
