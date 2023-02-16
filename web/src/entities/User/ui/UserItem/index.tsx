@@ -2,9 +2,10 @@ import React, { FunctionComponent } from "react";
 import Container from "./styles/Container";
 import { useNavigate } from "react-router-dom";
 import { User } from "../../../../shared/types/User";
-import { Avatar, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import { useFetchDirectMessages } from "../../../../widgets/DirectBox/hooks/fetchDirectMessages";
 import TextBlock from "./styles/TextBlock";
+import UserAvatar from "./styles/userAvatar";
 
 type UserItemProps = {
   user: User;
@@ -26,11 +27,15 @@ const UserItem: FunctionComponent<UserItemProps> = ({ user }) => {
 
   return (
     <Container onClick={handleNavigate}>
-      <Avatar src={user.photoURL} />
+      <UserAvatar sx={{ width: 60, height: 60 }} src={user.photoURL} />
       <TextBlock>
-        <Typography textAlign="left"> {user.displayName}</Typography>
+        <Typography textTransform="none" textAlign="left">
+          {user.displayName}
+        </Typography>
         {!!messages.length && (
-          <Typography color="divider">{cutText || ""}</Typography>
+          <Typography textTransform="none" variant="subtitle1" color="divider">
+            {cutText || ""}
+          </Typography>
         )}
       </TextBlock>
     </Container>

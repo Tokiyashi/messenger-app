@@ -6,6 +6,7 @@ const Container = styled(Button)`
   justify-content: flex-start;
   height: 10%;
   align-items: center;
+  padding-left: 1rem;
   gap: 1rem;
 `;
 export default Container;
