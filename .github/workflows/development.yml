@@ -45,10 +45,9 @@ jobs:
           node-version: 16
 
       - name: "🔧 install npm@latest"
+        working-directory: ./web
         run: cd web && npm i -g npm@latest
 
-      - name: "📦 install dependencies"
-        uses: bahmutov/npm-install@v1
-
       - name: "🔍 lint code"
+        working-directory: ./web
         run:  npm run lint --if-present
