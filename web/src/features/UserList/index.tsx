@@ -23,7 +23,7 @@ const UserList = () => {
   }, []);
 
   const userItems = users.map((user) => (
-    <UserItem key={user.uid} user={user} />
+    <UserItem key={user.uid} item={user} />
   ));
 
   return <>{userItems}</>;

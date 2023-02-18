@@ -54,9 +54,14 @@ export const useFetchDirectMessages = (companionId: string) => {
     });
   }, [companionId]);
 
-  const result = [...senderMessages, ...receiverMessages].sort(
-    (a, b) => new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
-  );
+  const isSavedChat = uid === companionId;
+
+  const result = isSavedChat
+    ? [...senderMessages]
+    : [...senderMessages, ...receiverMessages].sort(
+        (a, b) =>
+          new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
+      );
 
   return result;
 };
