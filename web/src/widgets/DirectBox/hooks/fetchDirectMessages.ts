@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { Query } from "@firebase/firestore-types";
-import { DirectMessage } from "../../../shared/types/chatMessage";
+import { DirectMessage } from "../../../entities/Message/config/types";
 import { Context } from "../../../app/App";
 import { useAppSelector } from "../../../shared/hooks/redux";
 
@@ -29,7 +29,7 @@ export const useFetchDirectMessages = (companionId: string) => {
       const items: DirectMessage[] = [];
       querySnapshot.forEach((doc) => {
         const data = doc.data();
-        data.createdAt = data["createdAt"].toDate();
+        data.createdAt = data["createdAt"]?.toDate();
         items.push(data as DirectMessage);
       });
       setSenderMessages(items);

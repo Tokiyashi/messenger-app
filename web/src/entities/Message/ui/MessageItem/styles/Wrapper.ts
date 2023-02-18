@@ -1,5 +1,5 @@
 import { Box, styled } from "@mui/material";
-import { MessagePosition } from "../../../model/MessagePositions";
+import { MessagePosition } from "../../../config/MessagePositions";
 
 type WrapperProps = {
   pos: MessagePosition;

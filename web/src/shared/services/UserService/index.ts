@@ -70,15 +70,6 @@ class UserService {
     return result;
   };
 
-   handleDelete = async () => {
-    await firebase
-      .firestore()
-      .collection("messages")
-      .get()
-      .then((querySnapshot) => {
-        querySnapshot.docs.forEach((doc) => doc.ref.delete());
-      });
-  };
 }
 
 export const userService: UserService = new UserService();

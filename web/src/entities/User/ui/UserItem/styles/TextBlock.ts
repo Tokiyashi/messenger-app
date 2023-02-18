@@ -5,6 +5,8 @@ const TextBlock = styled(Box)`
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
+  width: 100%;
 `;
+
 
 export default TextBlock;
