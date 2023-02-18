@@ -5,7 +5,7 @@ interface ThemeState {
 }
 
 const initialState: ThemeState = {
-  color: "#fafafa",
+  color: "#ffb136",
 };
 
 export const themeSlice = createSlice({
