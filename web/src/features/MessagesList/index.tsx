@@ -4,7 +4,7 @@ import Container from "./styles/Container";
 import ItemsWrapper from "./styles/ItemsWrapper";
 import { isNull } from "lodash";
 import { Box } from "@mui/material";
-import { DirectMessage } from "../../shared/types/chatMessage";
+import { DirectMessage } from "../../entities/Message/config/types";
 
 type MessagesListProps = {
   messages: DirectMessage[];
@@ -28,7 +28,7 @@ const MessagesList: FunctionComponent<MessagesListProps> = ({ messages }) => {
     <Container>
       <ItemsWrapper>
         {messageItems}
-        <Box ref={messagesContainer}></Box>
+        <Box ref={messagesContainer} />
       </ItemsWrapper>
     </Container>
   );

@@ -1,36 +1,22 @@
 import React, {
   FunctionComponent,
   KeyboardEvent,
-  useContext,
   useState,
 } from "react";
 import Container from "./styles/Container";
-import firebase from "firebase/compat";
 import SendIcon from "@mui/icons-material/Send";
 import SendButton from "./styles/SendButton";
-import { Context } from "../../../app/App";
-import { useAppSelector } from "../../../shared/hooks/redux";
 import StyledTextField from "./styles/StyledTextField";
-import { useParams } from "react-router-dom";
+import useAddNewMessage from "../model/useAddNewMessage";
 
 const InputBar: FunctionComponent = () => {
-  const { companionId } = useParams();
-  const { user } = useAppSelector((state) => state.userReducer);
   const [value, setValue] = useState("");
-  const { firestore } = useContext(Context);
-  const handleAddMessage = async () => {
-    setValue("");
 
-    if (!value || !user || !companionId) {
-      return;
-    }
-    const message = {
-      receiverId: companionId,
-      message: value,
-      uid: user.uid,
-      createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-    };
-    await firestore.collection("messages").add(message);
+  const createMessage = useAddNewMessage(value)
+
+  const handleAddMessage = async () => {
+    await createMessage()
+    setValue("");
   };
 
   const handleValueChange = (input: string) => {

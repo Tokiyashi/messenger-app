@@ -69,6 +69,7 @@ class UserService {
       });
     return result;
   };
+
 }
 
 export const userService: UserService = new UserService();

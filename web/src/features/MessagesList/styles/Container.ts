@@ -5,7 +5,6 @@ const Container = styled(Box)`
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  max-height: 80vh;
   height: 100%;
   overflow-y: scroll;
 `;

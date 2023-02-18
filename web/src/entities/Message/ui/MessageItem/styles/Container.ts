@@ -1,5 +1,5 @@
 import { Box, styled } from "@mui/material";
-import { MessagePosition } from "../../../model/MessagePositions";
+import { MessagePosition } from "../../../config/MessagePositions";
 
 type WrapperProps = {
   pos: MessagePosition;
@@ -12,7 +12,6 @@ const Container = styled(Box)`
   justify-content: center;
   align-items: center;
   min-height: 1rem;
-  width: 100%;
   max-width: 40rem;
 `;
 

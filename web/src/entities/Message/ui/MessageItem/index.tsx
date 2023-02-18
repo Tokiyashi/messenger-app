@@ -1,14 +1,18 @@
 import React, { FunctionComponent, useState } from "react";
-import { DirectMessage } from "../../../../shared/types/chatMessage";
+import { DirectMessage } from "../../config/types";
 import Container from "./styles/Container";
 import { Avatar, Typography } from "@mui/material";
 import Wrapper from "./styles/Wrapper";
 import { userService } from "../../../../shared/services/UserService";
 import useAsyncEffect from "use-async-effect";
 import MessageAndInfo from "./styles/MessageAndInfo";
-import { MessagePosition } from "../../model/MessagePositions";
+import { MessagePosition } from "../../config/MessagePositions";
 import { useAppSelector } from "../../../../shared/hooks/redux";
 import { isNull } from "lodash";
+import dateFormat from "dateformat";
+import UserNameAndTime from "./styles/UserNameAndTime";
+import {getFirstName} from "../../../User/helpers/getName";
+import SmallTimeText from "../../../../shared/ui/SmallTimeText";
 
 type MessageItemProps = {
   item: DirectMessage;
@@ -45,9 +49,12 @@ const MessageItem: FunctionComponent<MessageItemProps> = ({ item }) => {
             {item.message}
           </Typography>
         </Container>
-        <Typography textAlign="center">
-          {fetchedUser && fetchedUser.displayName}
-        </Typography>
+        <UserNameAndTime>
+          <SmallTimeText> {dateFormat(item.createdAt, "shortTime")} </SmallTimeText>
+          <Typography textAlign="center">
+            {fetchedUser && getFirstName(fetchedUser.displayName)}
+          </Typography>
+        </UserNameAndTime>
       </MessageAndInfo>
       <Avatar src={fetchedUser && fetchedUser?.photoURL} />
     </Wrapper>

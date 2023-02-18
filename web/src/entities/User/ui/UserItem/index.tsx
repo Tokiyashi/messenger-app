@@ -6,6 +6,9 @@ import { Typography } from "@mui/material";
 import { useFetchDirectMessages } from "../../../../widgets/DirectBox/hooks/fetchDirectMessages";
 import TextBlock from "./styles/TextBlock";
 import UserAvatar from "./styles/userAvatar";
+import dateFormat from "dateformat";
+import LastMessage from "./styles/LastMessage";
+import SmallTimeText from "../../../../shared/ui/SmallTimeText";
 
 type UserItemProps = {
   user: User;
@@ -13,7 +16,7 @@ type UserItemProps = {
 
 const UserItem: FunctionComponent<UserItemProps> = ({ user }) => {
   const navigate = useNavigate();
-  const MAX_MESSAGE_SIZE = 16;
+  const MAX_MESSAGE_SIZE = 12;
 
   const handleNavigate = () => {
     navigate(`/direct/${user.uid}`);
@@ -33,9 +36,12 @@ const UserItem: FunctionComponent<UserItemProps> = ({ user }) => {
           {user.displayName}
         </Typography>
         {!!messages.length && (
-          <Typography textTransform="none" variant="subtitle1" color="divider">
-            {cutText || ""}
-          </Typography>
+          <LastMessage>
+            <Typography textTransform="none" variant="subtitle1" color="grey">
+              {cutText || ""}
+            </Typography>
+            <SmallTimeText>{dateFormat(lastMessage.createdAt, 'shortTime')}</SmallTimeText>
+          </LastMessage>
         )}
       </TextBlock>
     </Container>
