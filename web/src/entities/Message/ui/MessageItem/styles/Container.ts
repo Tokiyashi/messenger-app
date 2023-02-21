@@ -13,6 +13,7 @@ const Container = styled(Box)`
   align-items: center;
   min-height: 1rem;
   max-width: 40rem;
+  word-break: break-word;
 `;
 
 export default Container;

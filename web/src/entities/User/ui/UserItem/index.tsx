@@ -3,7 +3,7 @@ import Container from "./styles/Container";
 import { useNavigate } from "react-router-dom";
 import { User } from "../../../../shared/types/User";
 import { Typography } from "@mui/material";
-import { useFetchDirectMessages } from "../../../../widgets/DirectBox/hooks/fetchDirectMessages";
+import { useFetchDirectMessages } from "../../../Message/model/hooks/fetchDirectMessages";
 import TextBlock from "./styles/TextBlock";
 import UserAvatar from "./styles/userAvatar";
 import dateFormat from "dateformat";
@@ -36,7 +36,7 @@ const UserItem: FunctionComponent<UserItemProps> = ({ item }) => {
   return (
     <Container onClick={handleNavigate}>
       {isMe ? (
-        <BookIcon  sx={{ width: 60, height: 60 }} />
+        <BookIcon sx={{ width: 60, height: 60 }} />
       ) : (
         <UserAvatar sx={{ width: 60, height: 60 }} src={item.photoURL} />
       )}

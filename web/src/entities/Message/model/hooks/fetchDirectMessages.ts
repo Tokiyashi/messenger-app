@@ -1,15 +1,14 @@
 import { useContext, useEffect, useState } from "react";
 import { Query } from "@firebase/firestore-types";
-import { DirectMessage } from "../../../entities/Message/config/types";
-import { Context } from "../../../app/App";
-import { useAppSelector } from "../../../shared/hooks/redux";
+import { DirectMessage } from "../../config/types";
+import { Context } from "../../../../app/App";
+import { useAppSelector } from "../../../../shared/hooks/redux";
 
 export const useFetchDirectMessages = (companionId: string) => {
   const { firestore } = useContext(Context);
   const { user } = useAppSelector((state) => state.userReducer);
   const [senderMessages, setSenderMessages] = useState<DirectMessage[]>([]);
   const [receiverMessages, setReceiverMessages] = useState<DirectMessage[]>([]);
-
   const uid = user?.uid;
 
   useEffect(() => {
@@ -29,7 +28,7 @@ export const useFetchDirectMessages = (companionId: string) => {
       const items: DirectMessage[] = [];
       querySnapshot.forEach((doc) => {
         const data = doc.data();
-        data.createdAt = data["createdAt"]?.toDate();
+        data.createdAt = data["createdAt"] ? data["createdAt"]?.toDate() : null;
         items.push(data as DirectMessage);
       });
       setSenderMessages(items);
@@ -47,7 +46,7 @@ export const useFetchDirectMessages = (companionId: string) => {
       const items: DirectMessage[] = [];
       querySnapshot.forEach((doc) => {
         const data = doc.data();
-        data.createdAt = data["createdAt"].toDate();
+        data.createdAt = data["createdAt"]?.toDate();
         items.push(data as DirectMessage);
       });
       setReceiverMessages(items);
@@ -56,12 +55,12 @@ export const useFetchDirectMessages = (companionId: string) => {
 
   const isSavedChat = uid === companionId;
 
-  const result = isSavedChat
+  const messages = isSavedChat
     ? [...senderMessages]
     : [...senderMessages, ...receiverMessages].sort(
         (a, b) =>
           new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
       );
 
-  return result;
+  return messages;
 };
