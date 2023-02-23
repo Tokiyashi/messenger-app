@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from "react";
 import Container from "./styles/Container";
-import { useFetchDirectMessages } from "../DirectBox/hooks/fetchDirectMessages";
+import { useFetchDirectMessages } from "../../entities/Message/model/hooks/fetchDirectMessages";
 import { useParams } from "react-router-dom";
 import MessagesList from "../../features/MessagesList";
 

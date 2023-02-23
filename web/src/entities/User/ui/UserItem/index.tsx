@@ -1,16 +1,16 @@
 import React, { FunctionComponent } from "react";
 import Container from "./styles/Container";
 import { useNavigate } from "react-router-dom";
-import { User } from "../../../../shared/types/User";
+import { User } from "../../model/types/User";
 import { Typography } from "@mui/material";
-import { useFetchDirectMessages } from "../../../../widgets/DirectBox/hooks/fetchDirectMessages";
+import { useFetchDirectMessages } from "../../../Message/model/hooks/fetchDirectMessages";
 import TextBlock from "./styles/TextBlock";
 import UserAvatar from "./styles/userAvatar";
 import dateFormat from "dateformat";
 import LastMessage from "./styles/LastMessage";
 import SmallTimeText from "../../../../shared/ui/SmallTimeText";
-import { useAppSelector } from "../../../../shared/hooks/redux";
 import BookIcon from "@mui/icons-material/Book";
+import { useUser } from "../../model/hooks/user";
 
 type UserItemProps = {
   item: User;
@@ -19,7 +19,7 @@ type UserItemProps = {
 const UserItem: FunctionComponent<UserItemProps> = ({ item }) => {
   const navigate = useNavigate();
   const MAX_MESSAGE_SIZE = 12;
-  const { user } = useAppSelector((state) => state.userReducer);
+  const user = useUser((state) => state.user);
 
   const handleNavigate = () => {
     navigate(`/direct/${item.uid}`);
@@ -36,7 +36,7 @@ const UserItem: FunctionComponent<UserItemProps> = ({ item }) => {
   return (
     <Container onClick={handleNavigate}>
       {isMe ? (
-        <BookIcon  sx={{ width: 60, height: 60 }} />
+        <BookIcon sx={{ width: 60, height: 60 }} />
       ) : (
         <UserAvatar sx={{ width: 60, height: 60 }} src={item.photoURL} />
       )}

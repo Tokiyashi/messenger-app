@@ -7,12 +7,12 @@ import { userService } from "../../../../shared/services/UserService";
 import useAsyncEffect from "use-async-effect";
 import MessageAndInfo from "./styles/MessageAndInfo";
 import { MessagePosition } from "../../config/MessagePositions";
-import { useAppSelector } from "../../../../shared/hooks/redux";
 import { isNull } from "lodash";
 import dateFormat from "dateformat";
 import UserNameAndTime from "./styles/UserNameAndTime";
-import {getFirstName} from "../../../User/helpers/getName";
+import { getFirstName } from "../../../User/helpers/getName";
 import SmallTimeText from "../../../../shared/ui/SmallTimeText";
+import { useUser } from "../../../User/model/hooks/user";
 
 type MessageItemProps = {
   item: DirectMessage;
@@ -20,20 +20,17 @@ type MessageItemProps = {
 
 const MessageItem: FunctionComponent<MessageItemProps> = ({ item }) => {
   const [fetchedUser, setFetchedUser] = useState<any | undefined>();
-  const [isMe, setIsMe] = useState(false);
-  const { user } = useAppSelector((state) => state.userReducer);
+  const user = useUser((state) => state.user);
 
   useAsyncEffect(async () => {
     const result = await userService.getUserByUid(item.uid);
     if (!result) {
       return;
     }
-
-    const checkIsMe: boolean = !isNull(user) && user.uid === item.uid;
-    setIsMe(checkIsMe);
     setFetchedUser(result);
   }, [item]);
 
+  const isMe: boolean = !isNull(user) && user.uid === item.uid;
   const messagePosition = isMe ? MessagePosition.RIGHT : MessagePosition.LEFT;
 
   if (!fetchedUser) return <></>;
@@ -50,7 +47,10 @@ const MessageItem: FunctionComponent<MessageItemProps> = ({ item }) => {
           </Typography>
         </Container>
         <UserNameAndTime>
-          <SmallTimeText> {dateFormat(item.createdAt, "shortTime")} </SmallTimeText>
+          <SmallTimeText>
+            {" "}
+            {dateFormat(item.createdAt, "shortTime")}{" "}
+          </SmallTimeText>
           <Typography textAlign="center">
             {fetchedUser && getFirstName(fetchedUser.displayName)}
           </Typography>

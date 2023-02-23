@@ -1,7 +1,7 @@
 import React from "react";
 import Container from "./styles/Container";
 import UserList from "../../features/UserList";
-import ThemePicker from "../../features/ThemePicker";
+import ThemePicker from "../../features/ThemePicker/ui";
 import DeleteAllMessages from "../../features/DeleteAllMessages/ui";
 
 const Sidebar = () => {
