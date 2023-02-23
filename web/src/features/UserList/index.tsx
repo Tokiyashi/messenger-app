@@ -1,11 +1,11 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Query } from "@firebase/firestore-types";
 import UserItem from "../../entities/User/ui/UserItem";
-import { Context } from "../../app/App";
-import { User } from "../../shared/types/User";
+import { User } from "../../entities/User/model/types/User";
+import { useFirebase } from "../../shared/hooks/firebase";
 
 const UserList = () => {
-  const { firestore } = useContext(Context);
+  const firestore = useFirebase(state => state.firestore)
   const [users, setUsers] = useState<User[]>([]);
   const query: Query = firestore
     .collection("users")

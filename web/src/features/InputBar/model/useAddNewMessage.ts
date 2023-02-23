@@ -1,12 +1,11 @@
 import firebase from "firebase/compat";
-import { useContext } from "react";
-import { Context } from "../../../app/App";
-import { useAppSelector } from "../../../shared/hooks/redux";
 import { useParams } from "react-router-dom";
+import {useFirebase} from "../../../shared/hooks/firebase";
+import {useUser} from "../../../entities/User/model/hooks/user";
 
 const useAddNewMessage = (value: string) => {
-  const { firestore } = useContext(Context);
-  const { user } = useAppSelector((state) => state.userReducer);
+  const firestore = useFirebase(state => state.firestore)
+  const user  = useUser((state) => state.user);
   const { companionId } = useParams();
 
   if (!value || !user || !companionId) {

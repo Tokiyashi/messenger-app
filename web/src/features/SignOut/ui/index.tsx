@@ -1,11 +1,11 @@
-import React, { FunctionComponent, useContext } from "react";
+import React, { FunctionComponent } from "react";
 import { Box, Button, Typography } from "@mui/material";
-import { Context } from "../../../app/App";
-import { useAppSelector } from "../../../shared/hooks/redux";
+import { useFirebase } from "../../../shared/hooks/firebase";
+import {useUser} from "../../../entities/User/model/hooks/user";
 
 const SignOut: FunctionComponent = () => {
-  const { auth } = useContext(Context);
-  const { user } = useAppSelector((state) => state.userReducer);
+  const auth = useFirebase((state) => state.auth);
+  const user = useUser((state) => state.user);
 
   const handleSignOut = () => {
     return auth.signOut();

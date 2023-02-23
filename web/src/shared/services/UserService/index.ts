@@ -1,5 +1,5 @@
 import firebase from "firebase/compat";
-import { User } from "../../types/User";
+import { User } from "../../../entities/User/model/types/User";
 import { nanoid } from "nanoid";
 
 class UserService {
