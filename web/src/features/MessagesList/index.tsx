@@ -10,7 +10,7 @@ import ItemsWrapper from "./styles/ItemsWrapper";
 import { Box } from "@mui/material";
 import { DirectMessage } from "../../entities/Message/config/types";
 import useAsyncEffect from "use-async-effect";
-import { userService } from "../../shared/services/UserService";
+import { userService } from "../../entities/User/model/UserService";
 
 type MessagesListProps = {
   messages: DirectMessage[];

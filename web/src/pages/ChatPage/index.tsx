@@ -3,7 +3,7 @@ import PageContainer from "../styles/PageContainer";
 import Header from "../../widgets/Header";
 import FlexContainer from "../styles/FlexContainer";
 import ChatWindow from "../styles/ChatWindow";
-import Sidebar from "../../widgets/Sidebar";
+import Sidebar from "../../widgets/Sidebar/ui";
 import ChatBox from "../../widgets/DirectBox";
 import InputBar from "../../features/InputBar/ui";
 
