@@ -3,8 +3,8 @@ import React from "react";
 import Pages from "../pages";
 import AuthPage from "../pages/AuthPage";
 import { useListenUser } from "../entities/User/model/hooks/listenUser";
-import {useThemeColors} from "../features/ThemePicker/model/hooks/themeColors";
-import {useUser} from "../entities/User/model/hooks/user";
+import { useThemeColors } from "../features/ThemePicker/model/hooks/themeColors";
+import { useUser } from "../entities/User/model/hooks/user";
 
 //TODO
 //storybook
@@ -15,7 +15,7 @@ import {useUser} from "../entities/User/model/hooks/user";
 function App() {
   useListenUser();
   const user = useUser((state) => state.user);
-  const accentColor = useThemeColors(state => state.accentColor)
+  const accentColor = useThemeColors((state) => state.accentColor);
   const darkTheme = createTheme({
     palette: {
       mode: "dark",

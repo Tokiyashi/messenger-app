@@ -38,7 +38,7 @@ const MessagesList: FunctionComponent<MessagesListProps> = ({ messages }) => {
   return (
     <Container>
       <ItemsWrapper>
-        {items}
+        {!!messages.length && items}
         <Box ref={messagesContainer} />
       </ItemsWrapper>
     </Container>
