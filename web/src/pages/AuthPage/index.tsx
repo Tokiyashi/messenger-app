@@ -2,7 +2,7 @@ import React from "react";
 import PageContainer from "../styles/PageContainer";
 import {Button, Typography} from "@mui/material";
 import Content from "./styles/Content";
-import {userService} from "../../shared/services/UserService";
+import {userService} from "../../entities/User/model/UserService";
 import _ from "lodash";
 import {DEFAULT_USER} from "../../entities/User/constants/DefaultUser";
 import {User} from "../../entities/User/model/types/User";

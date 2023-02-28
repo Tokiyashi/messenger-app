@@ -3,7 +3,7 @@ import firebase from "firebase/compat";
 import { User } from "../types/User";
 import _, { isNull } from "lodash";
 import { DEFAULT_USER } from "../../constants/DefaultUser";
-import { userService } from "../../../../shared/services/UserService";
+import { userService } from "../UserService";
 import { useUser } from "./user";
 
 export const useListenUser = () => {

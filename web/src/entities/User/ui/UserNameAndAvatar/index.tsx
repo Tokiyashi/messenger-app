@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Avatar, Typography } from "@mui/material";
 import { User } from "../../model/types/User";
 import useAsyncEffect from "use-async-effect";
-import { userService } from "../../../../shared/services/UserService";
+import { userService } from "../../model/UserService";
 import { useParams } from "react-router-dom";
 import Container from "./styles/Container";
 

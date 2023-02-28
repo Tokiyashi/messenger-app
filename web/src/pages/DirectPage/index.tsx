@@ -4,7 +4,7 @@ import FlexContainer from "../styles/FlexContainer";
 import ChatWindow from "../styles/ChatWindow";
 import Header from "../../widgets/Header";
 import InputBar from "../../features/InputBar/ui";
-import Sidebar from "../../widgets/Sidebar";
+import Sidebar from "../../widgets/Sidebar/ui";
 import DirectBox from "../../widgets/DirectBox";
 
 const DirectPage = () => {

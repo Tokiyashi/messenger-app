@@ -5,7 +5,7 @@ import { User } from "../../entities/User/model/types/User";
 import { useFirebase } from "../../shared/hooks/firebase";
 
 const UserList = () => {
-  const firestore = useFirebase(state => state.firestore)
+  const firestore = useFirebase((state) => state.firestore);
   const [users, setUsers] = useState<User[]>([]);
   const query: Query = firestore
     .collection("users")

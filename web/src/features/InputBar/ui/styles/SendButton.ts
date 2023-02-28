@@ -1,8 +1,8 @@
 import { Button, styled } from "@mui/material";
 
 const SendButton = styled(Button)`
-  height: 4rem;
-  width: 4rem;
+  height: 3rem;
+  width: 3rem;
   display: flex;
   justify-content: center;
   align-items: center;

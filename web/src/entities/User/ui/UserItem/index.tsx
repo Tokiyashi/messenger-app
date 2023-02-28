@@ -35,13 +35,14 @@ const UserItem: FunctionComponent<UserItemProps> = ({ item }) => {
 
   return (
     <Container onClick={handleNavigate}>
-      {isMe ? (
-        <BookIcon sx={{ width: 60, height: 60 }} />
-      ) : (
-        <UserAvatar sx={{ width: 60, height: 60 }} src={item.photoURL} />
-      )}
+      {isMe ? <BookIcon /> : <UserAvatar src={item.photoURL} />}
       <TextBlock>
-        <Typography color="white" textTransform="none" textAlign="left">
+        <Typography
+          sx={{ textOverflow: "ellipsis" }}
+          color="white"
+          textTransform="none"
+          textAlign="left"
+        >
           {isMe ? "Saved Messages" : item.displayName}
         </Typography>
         {!!messages.length && (
