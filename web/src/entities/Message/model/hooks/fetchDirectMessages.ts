@@ -1,19 +1,15 @@
 import { useEffect, useState } from "react";
 import { Query } from "@firebase/firestore-types";
 import { DirectMessage } from "../../config/types";
-import {useFirebase} from "../../../../shared/hooks/firebase";
-import {useUser} from "../../../User/model/hooks/user";
-import notification from "../../../../assets/sounds/notification.mp3";
+import { useFirebase } from "../../../../shared/hooks/firebase";
+import { useUser } from "../../../User/model/hooks/user";
 
 export const useFetchDirectMessages = (companionId: string) => {
-  const firestore  = useFirebase(state => state.firestore)
+  const firestore = useFirebase((state) => state.firestore);
   const user = useUser((state) => state.user);
   const [senderMessages, setSenderMessages] = useState<DirectMessage[]>([]);
   const [receiverMessages, setReceiverMessages] = useState<DirectMessage[]>([]);
   const uid = user?.uid;
-  const playNotification =() => {
-    void new Audio(notification).play();
-  }
 
   useEffect(() => {
     if (!uid || !companionId) {
@@ -53,9 +49,6 @@ export const useFetchDirectMessages = (companionId: string) => {
         data.createdAt = data["createdAt"]?.toDate();
         items.push(data as DirectMessage);
       });
-      if (receiverMessages.length !== items.length){
-        playNotification()
-      }
       setReceiverMessages(items);
     });
   }, [companionId]);
