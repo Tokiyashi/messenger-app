@@ -7,5 +7,6 @@ const Container = styled(Button)`
   align-items: center;
   padding-left: 1rem;
   gap: 1rem;
+  min-height: 4rem;
 `;
 export default Container;

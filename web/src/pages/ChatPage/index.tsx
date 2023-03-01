@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import PageContainer from "../styles/PageContainer";
-import Header from "../../widgets/Header";
+import Header from "../../widgets/Header/ui";
 import FlexContainer from "../styles/FlexContainer";
 import ChatWindow from "../styles/ChatWindow";
 import Sidebar from "../../widgets/Sidebar/ui";

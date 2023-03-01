@@ -9,6 +9,7 @@ const PageContainer = styled(Paper)`
   justify-content: space-between;
   height: 100vh;
   overflow-y: hidden;
+  border-radius: 0;
 `;
 
 export default PageContainer;

@@ -1,4 +1,4 @@
-import { Paper, styled} from "@mui/material";
+import { Paper, styled } from "@mui/material";
 
 const Container = styled(Paper)`
   width: 100%;
@@ -6,6 +6,7 @@ const Container = styled(Paper)`
   display: flex;
   align-items: center;
   justify-content: center;
+  border-radius: 0;
 `;
 
 export default Container;
