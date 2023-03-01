@@ -39,7 +39,7 @@ const UserItem: FunctionComponent<UserItemProps> = ({ item }) => {
       <TextBlock>
         <Typography
           sx={{ textOverflow: "ellipsis" }}
-          color="white"
+          color="text.primary"
           textTransform="none"
           textAlign="left"
         >

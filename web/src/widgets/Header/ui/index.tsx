@@ -1,13 +1,12 @@
 import React from "react";
-import Container from "./styles/Container";
-import Content from "./styles/Content";
-import SignOut from "../../features/SignOut/ui";
-import UserNameAndAvatar from "../../entities/User/ui/UserNameAndAvatar";
-import {Button, IconButton} from "@mui/material";
-import { useBurgerMenu } from "../Sidebar/model/store/BugerMenu";
-import ThemePicker from "../../features/ThemePicker/ui";
-import useWindowDimensions from "../../shared/hooks/windowDimensions";
+import Container from "../styles/Container";
+import Content from "../styles/Content";
+import UserNameAndAvatar from "../../../entities/User/ui/UserNameAndAvatar";
+import { IconButton } from "@mui/material";
+import { useBurgerMenu } from "../../Sidebar/model/store/BugerMenu";
+import useWindowDimensions from "../../../shared/hooks/windowDimensions";
 import MenuIcon from "@mui/icons-material/Menu";
+import UserMenu from "./UserMenu";
 
 const Header = () => {
   const toggleIsOpen = useBurgerMenu((state) => state.toggleIsOpen);
@@ -19,12 +18,11 @@ const Header = () => {
       <Content>
         {isMobile && (
           <IconButton onClick={() => toggleIsOpen()}>
-            <MenuIcon color='primary' />
+            <MenuIcon color="primary" />
           </IconButton>
         )}
         <UserNameAndAvatar />
-        <SignOut />
-        <ThemePicker />
+        <UserMenu />
       </Content>
     </Container>
   );
