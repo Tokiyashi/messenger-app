@@ -2,7 +2,7 @@ import { Box, styled } from "@mui/material";
 
 const Container = styled(Box)`
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   width: 20%;
   flex-direction: column;

@@ -14,9 +14,13 @@ import { useUser } from "../../model/hooks/user";
 
 type UserItemProps = {
   item: User;
+  isHideWhenNoMessages?: boolean;
 };
 
-const UserItem: FunctionComponent<UserItemProps> = ({ item }) => {
+const UserItem: FunctionComponent<UserItemProps> = ({
+  item,
+  isHideWhenNoMessages = false,
+}) => {
   const navigate = useNavigate();
   const MAX_MESSAGE_SIZE = 12;
   const user = useUser((state) => state.user);
@@ -32,8 +36,8 @@ const UserItem: FunctionComponent<UserItemProps> = ({ item }) => {
   }`;
 
   const isMe = user && item.uid === user.uid;
-
-  return (
+  const isHide: boolean = !lastMessage && isHideWhenNoMessages;
+  return !isHide ? (
     <Container onClick={handleNavigate}>
       {isMe ? <BookIcon /> : <UserAvatar src={item.photoURL} />}
       <TextBlock>
@@ -57,6 +61,8 @@ const UserItem: FunctionComponent<UserItemProps> = ({ item }) => {
         )}
       </TextBlock>
     </Container>
+  ) : (
+    <></>
   );
 };
 
