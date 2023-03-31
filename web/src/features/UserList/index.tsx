@@ -3,9 +3,11 @@ import { Query } from "@firebase/firestore-types";
 import UserItem from "../../entities/User/ui/UserItem";
 import { User } from "../../entities/User/model/types/User";
 import { useFirebase } from "../../shared/hooks/firebase";
+import SearchBar from "./SearchBar";
 
 const UserList = () => {
   const firestore = useFirebase((state) => state.firestore);
+  const [searchQuery, setSearchQuery] = useState("");
   const [users, setUsers] = useState<User[]>([]);
   const query: Query = firestore
     .collection("users")
@@ -22,11 +24,23 @@ const UserList = () => {
     });
   }, []);
 
-  const userItems = users.map((user) => (
-    <UserItem key={user.uid} item={user} />
-  ));
+  const searchedUsers = users.filter((item) =>
+    item.displayName.toUpperCase().includes(searchQuery.toUpperCase())
+  );
 
-  return <>{userItems}</>;
+  const userItems = searchedUsers.map((user) => (
+    <UserItem
+      isHideWhenNoMessages={!searchQuery.length}
+      key={user.uid}
+      item={user}
+    />
+  ));
+  return (
+    <>
+      <SearchBar handleChangeValue={(value) => setSearchQuery(value)} />
+      {userItems}
+    </>
+  );
 };
 
 export default UserList;
